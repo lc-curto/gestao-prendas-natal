@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Models\User;
+use GuzzleHttp\Psr7\Query;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,8 +14,16 @@ class UserController extends Controller
     {
         $usersWDB = $this->loadUsersWDB();
 
-        $usersFromDB = User::select('id', 'name', 'nif', 'address', 'email')
-            ->get();
+        $searchPar = request()->query('search')?request()->query('search'):null;
+
+        $query = User::select('id', 'name', 'nif', 'address', 'email');
+
+        if($searchPar){
+            $query->where('name','LIKE' , "%{$searchPar}%")
+            ->orWhere('email','LIKE' , "%{$searchPar}%");
+        }
+
+        $usersFromDB = $query->get();
 
         // dd($usersFromDB);
 

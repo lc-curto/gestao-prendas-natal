@@ -14,6 +14,10 @@
     <h6>O contacto é o {{$contactInfo['name']}} - {{$contactInfo['contact']}}</h6>
     <h6>{{$cesaeInfo['name']}} - {{$cesaeInfo['address']}} - {{$cesaeInfo['email']}}</h6>
 
+    @auth
+        <h6>Olá {{Auth::user()->name}}</h6>
+    @endauth
+
     <h5>Alunos da turma</h5>
     <ul>
         @if (isset($students))

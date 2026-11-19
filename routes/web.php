@@ -13,7 +13,7 @@ Route::get('/hello/{message}', function ($message) {
 });
 
 //rota de homepage
-Route::get('/homepage', [UtilController::class, 'loadHomepage'])->name('home');
+Route::get('/home', [UtilController::class, 'loadHomepage'])->name('home');
 
 //registrar user
 Route::post('/store-users', [UserController::class, 'storeUser'])->name('users.store');
@@ -22,7 +22,7 @@ Route::put('/update-user', [UserController::class, 'updateUser'])->name('users.u
 // rotas de users
 Route::get('/users', [UserController::class, 'allUsers'])->name('users.all');
 Route::get('/add-users', [UserController::class, 'addUsers'])->name('users.add');
-Route::get('/edit-user/{id}', [UserController::class, 'editUser'])->name('users.edit');
+Route::get('/edit-user/{id}', [UserController::class, 'editUser'])->name('users.edit')->middleware('auth');
 Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
 
 
@@ -30,7 +30,7 @@ Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('us
 Route::get('/tasks', [TaskController::class, 'allTasks'])->name('tasks.all');
 Route::get('/add-tasks', [TaskController::class, 'createTasks'])->name('tasks.add');
 Route::post('/store-tasks', [TaskController::class, 'storeTasks'])->name('tasks.store');
-Route::get('/edit-task/{id}', [TaskController::class, 'editTasks'])->name('tasks.edit');
+Route::get('/edit-task/{id}', [TaskController::class, 'editTasks'])->name('tasks.edit')->middleware('auth');
 Route::get('/delete-task/{id}', [TaskController::class, 'deleteTasks'])->name('tasks.delete');
 
 
