@@ -79,6 +79,8 @@ class UserController extends Controller
         return redirect()->route('users.all')->with('message', 'user actualizado com sucesso!');
     }
 
+
+
     private function loadUsersWDB()
     {
         $usersWithoutDB = [

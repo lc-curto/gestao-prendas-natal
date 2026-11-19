@@ -52,10 +52,12 @@
                     <nav class="flex items-center justify-end gap-4">
                         @auth
                             <div class="flex items-center gap-2">
-                                <a href="{{ url('/dashboard') }}"
-                                    class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                    Dashboard
-                                </a>
+                                @if (Auth::user() && Auth::user()->user_type == 1)
+                                    <a href="{{ route('admin.dashboard') }}"
+                                        class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
+                                        Dashboard
+                                    </a>
+                                @endif
 
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf

@@ -1,10 +1,13 @@
 @extends('layouts.fo')
 
 @section('content')
+    <button onclick="history.back()" class="btn btn-secondary">
+        Voltar
+    </button>
     @if (session('message'))
         <div class="alert alert-success">
             {{ session('message') }}
-    </div>
+        </div>
     @endif
     <h6>Tarefas</h6>
     <table class="table">

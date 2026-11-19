@@ -1,7 +1,9 @@
-
 @extends('layouts.fo')
 
 @section('content')
+    <button onclick="history.back()" class="btn btn-secondary">
+        Voltar
+    </button>
     <h1>Adicionar Tasks</h1>
 
     <form method="POST" action="{{ route('tasks.store') }}">

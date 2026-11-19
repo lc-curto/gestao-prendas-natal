@@ -1,6 +1,9 @@
 @extends('layouts.fo')
 
 @section('content')
+    <button onclick="history.back()" class="btn btn-secondary">
+        Voltar
+    </button>
     @if (session('message'))
         <div class="alert alert-success">
             {{ session('message') }}
@@ -9,7 +12,7 @@
     <h1 class="display-5">Prendas de Natal 🎁🎁</h1>
     <section class="container">
         <div class="text-end">
-            <a href="{{ route('gifts.add')}}">
+            <a href="{{ route('gifts.add') }}">
                 <button class=" btn btn-info"> Adicionar</button>
             </a>
         </div>
@@ -38,7 +41,6 @@
                         <td>
                             @if ($gift->actual_value === null)
                                 <span class="text-muted">Por calcular</span>
-
                             @else
                                 @php
                                     $difference = $gift->actual_value - $gift->expected_value;

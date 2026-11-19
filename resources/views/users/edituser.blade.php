@@ -1,13 +1,16 @@
 @extends('layouts.fo')
 
 @section('content')
+    <button onclick="history.back()" class="btn btn-secondary">
+        Voltar
+    </button>
     <h6>Detalhes do user {{ $userInfo->name }}</h6>
 
     <form method="POST" action="{{ route('users.update') }}">
         @method('PUT')
         @csrf
 
-        <input type="hidden" name="id" value="{{$userInfo->id}}">
+        <input type="hidden" name="id" value="{{ $userInfo->id }}">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nome</label>
             <input value="{{ $userInfo->name }}" required type="text" name="name" class="form-control"
@@ -33,8 +36,8 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nif</label>
-            <input value="{{ $userInfo->nif }}" type="text" name="nif" class="form-control"
-                id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input value="{{ $userInfo->nif }}" type="text" name="nif" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
         </div>
 
 

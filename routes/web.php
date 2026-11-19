@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GiftsController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
@@ -25,6 +26,9 @@ Route::get('/add-users', [UserController::class, 'addUsers'])->name('users.add')
 Route::get('/edit-user/{id}', [UserController::class, 'editUser'])->name('users.edit')->middleware('auth');
 Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
 
+
+//Admin
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth');
 
 //rotas tasks
 Route::get('/tasks', [TaskController::class, 'allTasks'])->name('tasks.all');
